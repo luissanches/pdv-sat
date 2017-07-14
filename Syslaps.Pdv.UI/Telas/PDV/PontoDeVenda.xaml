@@ -1,0 +1,159 @@
+﻿<Window x:Class="Syslaps.Pdv.UI.Telas.PDV.PontoDeVenda"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:entity="clr-namespace:Syslaps.Pdv.Entity;assembly=Syslaps.Pdv.Entity"
+        mc:Ignorable="d"
+        Title="" Height="300" Width="300" ResizeMode="CanMinimize" WindowState="Maximized" WindowStyle="SingleBorderWindow"  Loaded="PontoDeVenda_OnLoaded" KeyDown="PontoDeVenda_OnKeyDown" Closing="PontoDeVenda_OnClosing">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Height="50" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <TextBlock Text="Situação do Caixa: " FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock x:Name="LblStatus" Margin="5,0,25,0" Text="{Binding CaixaCorrente.CaixaCorrente.Situacao}" FontSize="24" FontWeight="Bold" Foreground="DarkRed" VerticalAlignment="Center" />
+                <TextBlock Text="Usuario: " FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBlock x:Name="LblUsuario"  Margin="5,0,25,0"  Text="{Binding UsuarioCorrente.UsuarioLogado.Nome}" FontSize="24" FontWeight="Bold" Foreground="DarkRed" VerticalAlignment="Center"  />
+                <TextBlock x:Name="LblDataHora" Text="{Binding DataHoraCorrente}" Margin="0,0,50,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Bottom" Height="75" Margin="0,0,10,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button DockPanel.Dock="Right" x:Name="BtnEfetuarPagamento" Margin="10,0,10,0" Width="200" Height="74" Click="BtnEfetuarPagamento_OnClick" FontSize="14" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding VendaPossuiProdutos}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <TextBlock Text="(F10) - Efetuar Pagamento" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" Foreground="DarkRed" />
+                </Button>
+                <Button DockPanel.Dock="Right" x:Name="BtnSalvarComanda"  Margin="10,0,10,0" Width="120" Height="74" Click="BtnSalvarComanda_OnClick" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding VendaPossuiProdutos}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <TextBlock Text="(F9) - Salvar Comanda" TextWrapping="Wrap" TextAlignment="Center" FontSize="14" FontWeight="Bold" />
+                </Button>
+                <Button DockPanel.Dock="Right" x:Name="BtnIncluirCpf"  Margin="10,0,10,0" Width="120" Height="74" Visibility="Collapsed" Click="BtnIncluirCpf_Click" >
+                    <TextBlock Text="(F8) - Incluir CPF" TextWrapping="Wrap" TextAlignment="Center" FontSize="14" FontWeight="Bold" />
+                </Button>
+                <Button DockPanel.Dock="Right" x:Name="BtnCancelarVenda" Margin="0,0,10,0"  Width="122" Height="74" Visibility="Collapsed" Click="BtnCancelarVenda_OnClick">
+                    <TextBlock Text="(ESC) - Cancelar Venda" TextWrapping="Wrap" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                </Button>
+                <Button DockPanel.Dock="Right" IsDefault="True" x:Name="BtnInicializarVenda" Margin="0,0,10,0" Width="122" Height="74" Click="BtnInicializarVenda_OnClick">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding PodeInicializarVenda}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <TextBlock Text="(F10) - Iniciar Venda" TextWrapping="Wrap" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                </Button>
+                <Button DockPanel.Dock="Right" x:Name="BtnAbrirFecharCaixa" Margin="0,0,10,0" Content="{Binding BtnAbrirFecharCaixaContent}" Width="122" Height="74" Click="BtnAbrirFecharCaixa_OnClick" FontSize="14" FontWeight="Bold" />
+                <Button DockPanel.Dock="Right" x:Name="BtnFechar" Content="_Minimizar"  Width="122" Height="74" Click="BtnFechar_OnClick" FontSize="14" FontWeight="Bold" />
+                <DockPanel Name="StpTotal" Visibility="Collapsed" Width="380" HorizontalAlignment="Stretch"  >
+                    <TextBlock Text="{Binding ValorTotalDaVenda, ConverterCulture='pt-BR', StringFormat='Total: \{0:c\}'}"  FontSize="32" FontWeight="Bold" Foreground="DarkRed" VerticalAlignment="Center" TextAlignment="Center"/>
+                </DockPanel>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Top" >
+            <DockPanel HorizontalAlignment="Stretch" >
+                <DockPanel DockPanel.Dock="Top"  HorizontalAlignment="Stretch" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"  />
+                            <ColumnDefinition  Width="7*"/>
+                            <ColumnDefinition  Width="Auto"/>
+                            <ColumnDefinition  Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Localizar Produto: " FontSize="14" FontWeight="Bold" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                        <TextBox Grid.Column="1"  x:Name="TxtProduto" Text="{Binding FiltrarComEsteTexto, UpdateSourceTrigger=PropertyChanged}" Height="63" FontSize="36"  Margin="15, 0, 25, 0" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" />
+                        <TextBlock Grid.Column="2" x:Name="LblNrComanda" Text="Comanda: " Visibility="Collapsed" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                        <TextBox Grid.Column="3" x:Name="TxtNrComanda" Text="{Binding NumeroComanda}"  Visibility="Collapsed"  Height="63" FontSize="36"  Margin="15, 0, 25, 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" KeyDown="TxtNrComanda_OnKeyDown" LostFocus="TxtNrComanda_OnLostFocus" />
+                    </Grid>
+                </DockPanel>
+                <Border  Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <DockPanel >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Name="PainelProdutosDaVenda" Width="0" />
+                            </Grid.ColumnDefinitions>
+                            <GroupBox Header="Produtos" Grid.Column="0">
+                                <ListBox Name="LstProdutosFiltrados" ItemsSource="{Binding ListaDeProdutosFiltrada}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate DataType="entity:Produto" >
+                                            <Border HorizontalAlignment="Stretch"  MinHeight="60" Margin="2" Background="GhostWhite"  BorderBrush="CadetBlue" BorderThickness="1,1,2,2" CornerRadius="2" Padding="10">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Grid.Column="0"  Orientation="Horizontal">
+                                                        <Label Content="{Binding DescricaoDisplay
+                                                            }" FontSize="20" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                        <TextBlock Text="{Binding PrecoVenda, ConverterCulture='pt-BR', StringFormat={}{0:c}}" FontSize="26" FontWeight="Bold" Foreground="DarkRed" VerticalAlignment="Center" Margin="0,0,0,0" />
+                                                        <TextBox  Width="80" Height="50" Text="1" FontSize="32" TextAlignment="Center" Margin="25,0,10,0"  PreviewTextInput="UIElement_OnPreviewTextInput" />
+                                                        <Button Name="BtnAddProduto"  Width="60" Height="50" Cursor="Hand" ForceCursor="True" Click="ButtonAdicionarProduto_OnClick">
+                                                            <StackPanel>
+                                                                <Image Source="../Images/add-icon.png" Width="45" Height="45" />
+                                                            </StackPanel>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </GroupBox>
+                            <GroupBox Grid.Column="1"  Header="Produtos da Venda">
+                                <ListBox  Name="LstProdutosDaVenda" ItemsSource="{Binding ListaDeVendaProdutos}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                    <ListBox.ItemTemplate >
+                                        <DataTemplate DataType="entity:VendaProduto"  >
+                                            <DockPanel HorizontalAlignment="Stretch">
+                                                <Border HorizontalAlignment="Stretch"  Background="GhostWhite"  BorderBrush="CadetBlue" BorderThickness="1,1,2,2" CornerRadius="2">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock Grid.Row="0"  Text="{Binding Produto.Descricao}" Width="330" TextAlignment="Center" />
+                                                        <Button Grid.Row="0" Content="x" Click="ButtonRemoverProduto_OnClick" Width="20" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                                                        <WrapPanel Grid.Row="1"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,2" >
+                                                            <TextBlock Text="Qtde:" Margin="10,0,5,0" />
+                                                            <TextBox Name="TxtVendaProdutoQuantidade"  Text="{Binding Quantidade, ConverterCulture='pt-BR'}"  Width="30" PreviewTextInput="UIElement_OnPreviewTextInput" LostFocus="TxtVendaProdutoValor_OnLostFocus" TextAlignment="Center" KeyDown="TxtVendaProdutoQuantidade_KeyDown" />
+                                                            <TextBlock Text="x R$" Margin="10,0,10,0" />
+                                                            <TextBox Name="TxtVendaProdutoValor"  Text="{Binding ValorDoProdutoComDesconto, ConverterCulture='pt-BR', StringFormat={}{0:0.00}}" Width="50"  TextAlignment="Center" PreviewTextInput="UIElement_OnPreviewTextInput" LostFocus="TxtVendaProdutoValor_OnLostFocus" KeyDown="TxtVendaProdutoQuantidade_KeyDown"/>
+                                                            <TextBlock Text="{Binding ValorTotalVendaProduto, ConverterCulture='pt-BR', StringFormat={}{0:c}}" Margin="10,0,0,0" FontWeight="Bold"/>
+                                                        </WrapPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+            </DockPanel>
+        </Border>
+    </DockPanel>
+</Window>

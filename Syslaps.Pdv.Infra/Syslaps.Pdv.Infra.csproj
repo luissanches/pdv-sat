@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DBB7AB1-ED65-4755-97AA-C93E88E6CBC0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Syslaps.Pdv.Infra</RootNamespace>
+    <AssemblyName>Syslaps.Pdv.Infra</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\libs\x86\dapper\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.FastCrud">
+      <HintPath>..\libs\x86\dapper\Dapper.FastCrud.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\libs\x86\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\libs\x86\structmap\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\libs\x86\sqlite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Compress.cs" />
+    <Compile Include="ComunicacaoPermanente.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="Impressora\EnumSituacaoDaImpressora.cs" />
+    <Compile Include="Impressora\T20\Impressora.cs" />
+    <Compile Include="Impressora\T20\InterfaceEpsonNF.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\RepositorioBase.cs" />
+    <Compile Include="Repositorio\RepositorioCaixa.cs" />
+    <Compile Include="Repositorio\RepositorioClienteCampanha.cs" />
+    <Compile Include="Repositorio\RepositorioComanda.cs" />
+    <Compile Include="Repositorio\RepositorioCriarBaseDeDados.cs" />
+    <Compile Include="Repositorio\RepositorioCupomSat.cs" />
+    <Compile Include="Repositorio\RepositorioPedido.cs" />
+    <Compile Include="Repositorio\RepositorioPedidoProduto.cs" />
+    <Compile Include="Repositorio\RepositorioProducao.cs" />
+    <Compile Include="Repositorio\RepositorioProduto.cs" />
+    <Compile Include="Repositorio\RepositorioUsuario.cs" />
+    <Compile Include="Repositorio\RepositorioVenda.cs" />
+    <Compile Include="SAT\Bematech.cs" />
+    <Compile Include="SAT\Dimep.cs" />
+    <Compile Include="SAT\Elgin.cs" />
+    <Compile Include="SAT\Elgin2.cs" />
+    <Compile Include="SAT\Gertec.cs" />
+    <Compile Include="SAT\Kryptus.cs" />
+    <Compile Include="SAT\OffLine.cs" />
+    <Compile Include="SAT\SatBase.cs" />
+    <Compile Include="SAT\SatUtils.cs" />
+    <Compile Include="SAT\Sweda.cs" />
+    <Compile Include="SAT\Tanca.cs" />
+    <Compile Include="SAT\Urano.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Syslaps.Pdv.Core\Syslaps.Pdv.Core.csproj">
+      <Project>{35ed1e0d-3540-4ad1-9cd2-a35a9c850686}</Project>
+      <Name>Syslaps.Pdv.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Syslaps.Pdv.Cross\Syslaps.Pdv.Cross.csproj">
+      <Project>{2b0958ee-582b-42e5-b3ce-593e5d09154b}</Project>
+      <Name>Syslaps.Pdv.Cross</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Syslaps.Pdv.Entity\Syslaps.Pdv.Entity.csproj">
+      <Project>{c9719fea-d2d8-470b-9275-6a15157200a9}</Project>
+      <Name>Syslaps.Pdv.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

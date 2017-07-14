@@ -1,0 +1,52 @@
+﻿<Window x:Class="Syslaps.Pdv.UI.Telas.Cliente.ClienteCampanha"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Cadastro de Clientes para Campanha" Height="270" Width="650" WindowStartupLocation="CenterScreen"  Loaded="ClienteCampanha_OnLoaded">
+    <DockPanel>
+        <Border DockPanel.Dock="Bottom" Height="48" Margin="0,5,5,5">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button IsDefault="True" x:Name="BtnOk" Command="{Binding RegistrarClienteCommand}" Margin="0,0,5,0" Content="_Gravar" Width="98" />
+                <Button IsCancel="True" Content="_Cancelar" Width="76"/>
+            </StackPanel>
+        </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="35" />
+                <RowDefinition Height="35" />
+                <RowDefinition Height="55" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Margin="5,0,0,0" Grid.Row="0" Text="Campanha:"  />
+            <ComboBox Name="CmbTipoCampanha" Grid.Column="1" Grid.Row="0"  Grid.ColumnSpan="3" 
+                      ItemsSource="{Binding TipoCampanha}"
+                      SelectedValue="{Binding Path=TipoCampanhaSelecionada}"
+                      DisplayMemberPath="Value" SelectedValuePath="Key" SelectedIndex="0" Margin="3" />
+
+            <TextBlock Grid.Column="0" Margin="5,0,0,0" Grid.Row="1" Text="Cpf:" />
+            <TextBox Name="TxtCpf" Margin="3" Grid.Column="1" Grid.Row="1" Text="{Binding ClienteCampanha.CpfCnpj}" PreviewTextInput="TxtCpf_OnPreviewTextInput" LostFocus="TxtCpf_OnLostFocus" />
+
+            <TextBlock Grid.Column="2" Margin="5,0,0,0" Grid.Row="1" Text="Nome:" />
+            <TextBox Grid.Column="3" Margin="3" Grid.Row="1"  Text="{Binding ClienteCampanha.NomeCliente}"/>
+
+            <TextBlock Grid.Column="0" Margin="5,0,0,0" Grid.Row="2" Text="Telefone:" />
+            <TextBox Name="TxtTelefone" Margin="3" Grid.Column="1" Grid.Row="2"  Text="{Binding ClienteCampanha.Telefone}" PreviewTextInput="TxtTelefone_OnPreviewTextInput"/>
+
+            <TextBlock Grid.Column="2" Margin="5,0,0,0" Grid.Row="2" Text="Email:" />
+            <TextBox Grid.Column="3" Margin="3" Grid.Row="2"  Text="{Binding ClienteCampanha.Email}"/>
+
+            <TextBlock Grid.Column="0" Margin="5,0,0,0" Grid.Row="3" Text="Observações:" />
+            <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Grid.ColumnSpan="3" VerticalContentAlignment="Top"
+                     Text="{Binding ClienteCampanha.Observacao}" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" />
+        </Grid>
+    </DockPanel>
+</Window>

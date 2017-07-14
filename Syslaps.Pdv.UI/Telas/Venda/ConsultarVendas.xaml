@@ -1,0 +1,86 @@
+﻿<Window x:Class="Syslaps.Pdv.UI.Telas.Venda.ConsultarVendas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:entity="clr-namespace:Syslaps.Pdv.Entity;assembly=Syslaps.Pdv.Entity"
+        xmlns:venda="clr-namespace:Syslaps.Pdv.UI.Telas.Venda"
+        mc:Ignorable="d"
+        Title="Consultar Vendas" Height="300" Width="400" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="ConsultarVendas_OnLoaded" >
+    <DockPanel>
+        <Border DockPanel.Dock="Top" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="45">
+                <TextBlock Text="Tipos De Pagamento: "/>
+                <ComboBox ItemsSource="{Binding ListaDeTipoPagamentos}" Width="150" Height="28" Margin="5,0,5,0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="venda:TipoDePagamentoCheckBoxList">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding EstaSelecionado}" Width="20" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding TipoPagamento.Nome}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Text="Data Inicial:"  VerticalAlignment="Center" />
+                <DatePicker Name="DtInicio" SelectedDate="{Binding DataInicial}"  Margin="5,0,5,0" FontSize="12" VerticalAlignment="Center" Width="150" />
+                <TextBlock Text="Data Final:" Margin="20,0,0,0" VerticalAlignment="Center" />
+                <DatePicker Name="DtFim" SelectedDate="{Binding DataFinal}" Margin="5,0,5,0" FontSize="12" VerticalAlignment="Center"  Width="150" />
+                <Button Name="BtnFiltrar" Margin="20,0,0,0" Height="38"  Width="76" VerticalAlignment="Center" Command="{Binding FiltrarVendasCommand}">
+                    <Image Source="../Images/consultar-icon.png" Width="35" Height="35" />
+                </Button>
+                <Button Name="BtnImprimir" Margin="20,0,0,0" Height="38"  Width="76" VerticalAlignment="Center" Command="{Binding ImprimirVendasCommand}">
+                    <Image Source="../Images/impressora-icon.png" Width="35" Height="35" />
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Bottom" Margin="0,0,10,0" Height="50">
+            <Button IsCancel="True" Content="_Fechar" VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" Height="35"/>
+        </Border>
+        <GroupBox Header="Vendas"  DockPanel.Dock="Top" Margin="5,0,5,0">
+            <ListView ItemsSource="{Binding ListaDeVendasFiltrada}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate >
+                    <DataTemplate DataType="entity:Venda"  >
+                        <Border HorizontalAlignment="Stretch"  Margin="2" Background="GhostWhite"  BorderBrush="CadetBlue" BorderThickness="1,1,2,2" CornerRadius="2" Padding="2">
+                            <Expander >
+                                <Expander.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding DataVenda, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" FontSize="14" FontWeight="Bold" />
+                                        <TextBlock Text="{Binding  ValorTotalVenda, ConverterCulture='pt-BR', StringFormat='\{0:c\}'}" FontSize="16" FontWeight="Bold" Margin="15,0,0,0"/>
+                                    </StackPanel>
+                                </Expander.Header>
+                                <StackPanel>
+                                    <GroupBox Header="Produtos">
+                                        <ListView ItemsSource="{Binding VendaProdutoes}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                            <ListBox.ItemTemplate >
+                                                <DataTemplate DataType="entity:VendaProduto"  >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding DescricaoProduto}" Width="200"/>
+                                                        <TextBlock Text="{Binding  ValorDoProduto, ConverterCulture='pt-BR', StringFormat='Valor: \{0:c\}'}" Width="120"  HorizontalAlignment="Right" />
+                                                        <TextBlock Text="{Binding  Quantidade, StringFormat='Quantidade: \{0:\}'}" Width="120" HorizontalAlignment="Left" />
+                                                        <TextBlock Text="{Binding  ValorTotalVendaProduto, ConverterCulture='pt-BR', StringFormat='Total: \{0:c\}'}" Width="120"  HorizontalAlignment="Right" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListView>
+                                    </GroupBox>
+                                    <GroupBox Header="Pagamentos">
+                                        <ListView ItemsSource="{Binding VendaPagamentoes}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                            <ListBox.ItemTemplate >
+                                                <DataTemplate DataType="entity:VendaPagamento"  >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding TipoPagamento.Nome,  StringFormat='Tipo do Pagamento: \{0:\}'}" Width="200"/>
+                                                        <TextBlock Text="{Binding  ValorPagamento, ConverterCulture='pt-BR', StringFormat='Valor: \{0:c\}'}" Width="120"  HorizontalAlignment="Right" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListView>
+                                    </GroupBox>
+                                </StackPanel>
+                            </Expander>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListView>
+        </GroupBox>
+    </DockPanel>
+</Window>

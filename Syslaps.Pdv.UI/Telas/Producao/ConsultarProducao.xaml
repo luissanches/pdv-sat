@@ -1,0 +1,54 @@
+﻿<Window x:Class="Syslaps.Pdv.UI.Telas.Producao.ConsultarProducao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Syslaps.Pdv.UI.Telas.Producao"
+        mc:Ignorable="d"
+        Title="Consultar Produção" Height="260" Width="500" WindowStartupLocation="CenterScreen"   Closing="ConsultarProducao_OnClosing" Loaded="ConsultarProducao_OnLoaded">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="45">
+                <TextBlock Text="Data Inicial:"  VerticalAlignment="Center" />
+                <DatePicker Name="DtInicio" Margin="5,0,5,0" FontSize="12" VerticalAlignment="Center" Width="100" />
+                <TextBlock Text="Data Final:" Margin="20,0,0,0" VerticalAlignment="Center" />
+                <DatePicker Name="DtFim" Margin="5,0,5,0" FontSize="12" VerticalAlignment="Center"  Width="100" />
+                <Button Name="BtnFiltrar" Margin="20,0,0,0" Height="38"  Width="76" VerticalAlignment="Center" Click="BtnFiltrar_OnClick">
+                    <Image Source="../Images/consultar-icon.png" Width="35" Height="35" />
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Top" Margin="10,10,10,10"  Background="GhostWhite"  BorderBrush="CadetBlue" BorderThickness="1,1,2,2" CornerRadius="2" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Qtde Produzida:" FontSize="16" />
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding QtdeProduzida}" FontSize="16" HorizontalAlignment="Center"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Qtde Descartada Inteiro:" FontSize="16" />
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding QtdeDecartadaInteira}" FontSize="16" HorizontalAlignment="Center"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Qtde Descartada Parcial:" FontSize="16" />
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding QtdeDecartadaParcial}" FontSize="16" HorizontalAlignment="Center"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Valor Estimado da Perda:" FontSize="16" />
+                <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding ValorEstimado, ConverterCulture='pt-BR', StringFormat='\{0:c\}'}" FontSize="16" HorizontalAlignment="Center"/>
+
+            </Grid>
+        </Border>
+        <Border DockPanel.Dock="Bottom" Height="50" Margin="0,0,0,10" VerticalAlignment="Center">
+            <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
+                <Button Name="BtnOk" IsDefault="True" Content="_Ok" Width="76" Height="38" Click="BtnOk_OnClick"/>
+            </StackPanel>
+        </Border>
+    </DockPanel>
+</Window>

@@ -1,0 +1,67 @@
+﻿<Window x:Class="Syslaps.Pdv.UI.Telas.Alertas.Pagamentos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:entity="clr-namespace:Syslaps.Pdv.Entity;assembly=Syslaps.Pdv.Entity"
+        mc:Ignorable="d"
+        Title="Efetuar Pagamento" Height="400" Width="650" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Pagamentos_OnLoaded" KeyDown="Window_KeyDown">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Height="35" Margin="0,0,0,5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding ValorTotalDaVenda, ConverterCulture='pt-BR', StringFormat='Valor Da Venda: \{0:c\}'}" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="{Binding ValorTotalDePagamento, ConverterCulture='pt-BR', StringFormat='Total Da Pagamento: \{0:c\}'}" FontSize="16" FontWeight="Bold" Margin="15,0,15,0"/>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Top" Height="35" Margin="0,0,0,5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Name="CmbTipoDePagameto" ItemsSource="{Binding ListaDeTipoPagamentos}" MinWidth="250" Margin="10,0,10,0" SelectedIndex="0" SelectionChanged="CmbTipoDePagameto_OnSelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="entity:TipoPagamento">
+                            <TextBlock Text="{Binding Nome}" FontSize="16" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBox Name="TxtValor" Text="Digite o Valor" Width="150" FontSize="16" PreviewTextInput="UIElement_OnPreviewTextInput" Margin="10,0,10,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Button IsDefault="True" Content="Adicionar Pagamento" Click="AdicionarPagamento_OnClick" Width="122"/>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Bottom" Height="50" Margin="0,0,0,10" VerticalAlignment="Center">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Left"  VerticalAlignment="Center">
+                    <TextBlock Text="{Binding ValorTotalDeTroco, ConverterCulture='pt-BR', StringFormat='Troco: \{0:c\}'}"  Foreground="Red" Margin="20,0,0,0" FontSize="24" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel  DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
+                    <Button IsDefault="True" x:Name="BtnOk" Click="BtnOk_OnClick" MinWidth="60" Margin="0,0,10,0" Content="_Finalizar" Width="98" Height="38">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PodeFinalizarVenda}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button IsCancel="True" Content="_Cancelar" Width="76" Height="38"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+        <GroupBox Header="Pagamentos"  DockPanel.Dock="Top" Margin="5,0,5,0">
+            <ListView ItemsSource="{Binding ListaDeVendaPagamentos}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate >
+                    <DataTemplate DataType="entity:VendaPagamento"  >
+                        <Border HorizontalAlignment="Stretch"  Margin="2" Background="GhostWhite"  BorderBrush="CadetBlue" BorderThickness="1,1,2,2" CornerRadius="2" Padding="2">
+                            <DockPanel HorizontalAlignment="Stretch">
+                                <Button  DockPanel.Dock="Right" Content="x" Width="20" Click="RemoverPagamento_OnClick"/>
+                                <TextBlock DockPanel.Dock="Left" Text="{Binding TipoPagamento.Nome, StringFormat='Tipo de Pagamento: \{0:c\}'}" Width="310" FontSize="14" FontWeight="Bold" />
+                                <TextBlock DockPanel.Dock="Left" Text="{Binding ValorPagamento, ConverterCulture='pt-BR', StringFormat='Valor: \{0:c\}'}" Margin="10,0,10,0" FontSize="14" FontWeight="Bold"/>
+                            </DockPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListView>
+        </GroupBox>
+    </DockPanel>
+</Window>

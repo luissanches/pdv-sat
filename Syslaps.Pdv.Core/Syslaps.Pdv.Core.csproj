@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{35ED1E0D-3540-4AD1-9CD2-A35A9C850686}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Syslaps.Pdv.Core</RootNamespace>
+    <AssemblyName>Syslaps.Pdv.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\x86\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
+    <Compile Include="Dominio\Base\IEmail.cs" />
+    <Compile Include="Dominio\Comanda\Comanda.cs" />
+    <Compile Include="Dominio\Comanda\IComandaRepositorio.cs" />
+    <Compile Include="Dominio\Comanda\SituacaoComanda.cs" />
+    <Compile Include="Dominio\Impressora\IImpressora.cs" />
+    <Compile Include="Dominio\Base\IInfraLogger.cs" />
+    <Compile Include="Dominio\Base\IRepositorioBase.cs" />
+    <Compile Include="Dominio\Base\IRepositorioCriarBaseDeDados.cs" />
+    <Compile Include="Dominio\Base\ModeloBase.cs" />
+    <Compile Include="Dominio\Caixa\Caixa.cs" />
+    <Compile Include="Dominio\Caixa\EnumCaixaSituacao.cs" />
+    <Compile Include="Dominio\Caixa\EnumCaixaTipoOperacao.cs" />
+    <Compile Include="Dominio\Caixa\ICaixaRepositorio.cs" />
+    <Compile Include="Dominio\Cliente\ClienteCampanha.cs" />
+    <Compile Include="Dominio\Cliente\EnumTipoCampanha.cs" />
+    <Compile Include="Dominio\Cliente\IClienteCampanhaRepositorio.cs" />
+    <Compile Include="Dominio\Impressora\Cupom.cs" />
+    <Compile Include="Dominio\Pedido\IPedidoProdutoRepositorio.cs" />
+    <Compile Include="Dominio\Pedido\IPedidoRepositorio.cs" />
+    <Compile Include="Dominio\Pedido\Pedido.cs" />
+    <Compile Include="Dominio\Producao\IProducaoRepositorio.cs" />
+    <Compile Include="Dominio\Producao\Producao.cs" />
+    <Compile Include="Dominio\Produto\IProdutoRepositorio.cs" />
+    <Compile Include="Dominio\Produto\Produto.cs" />
+    <Compile Include="Dominio\SAT\CupomSat.cs" />
+    <Compile Include="Dominio\SAT\ICupomSatRepositorio.cs" />
+    <Compile Include="Dominio\SAT\ISat.cs" />
+    <Compile Include="Dominio\SAT\Sat.cs" />
+    <Compile Include="Dominio\Usuario\EnumTipoUsuario.cs" />
+    <Compile Include="Dominio\Usuario\IUsuarioRepositorio.cs" />
+    <Compile Include="Dominio\Usuario\Usuario.cs" />
+    <Compile Include="Dominio\Venda\IVendaRepositorio.cs" />
+    <Compile Include="Dominio\Venda\EnumTipoDocumento.cs" />
+    <Compile Include="Dominio\Venda\TipoPagamento.cs" />
+    <Compile Include="Dominio\Venda\Venda.cs" />
+    <Compile Include="Parametros.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Dominio\EnumStatusDoResultado.cs" />
+    <Compile Include="Dominio\ResultadoDoModelo.cs" />
+    <Compile Include="Dominio\RetornoPadronizado.cs" />
+    <Compile Include="Dominio\StatusRetornoPadronizado.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Syslaps.Pdv.Cross\Syslaps.Pdv.Cross.csproj">
+      <Project>{2b0958ee-582b-42e5-b3ce-593e5d09154b}</Project>
+      <Name>Syslaps.Pdv.Cross</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Syslaps.Pdv.Entity\Syslaps.Pdv.Entity.csproj">
+      <Project>{c9719fea-d2d8-470b-9275-6a15157200a9}</Project>
+      <Name>Syslaps.Pdv.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

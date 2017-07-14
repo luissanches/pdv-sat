@@ -1,0 +1,15 @@
+﻿<Window x:Class="Syslaps.Pdv.UI.Telas.SAT.ConfiguracaoSAT"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Syslaps.Pdv.UI.Telas.SAT"
+        mc:Ignorable="d"
+        Title="" Height="470" Width="650" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Button x:Name="BtnStatus" Content="Consultar Status" Margin="16,10,163.6,0" VerticalAlignment="Top" Height="25" Click="BtnStatus_Click"/>
+        <TextBlock x:Name="TxtResutadoStatus" Margin="16,46,19.6,91.4" TextWrapping="Wrap" Text="Resultado da Consulta" VerticalAlignment="Stretch"/>
+        <Button x:Name="BtnSendXml" Content="Enviar XML" Margin="0,10,19.6,0" Click="BtnSendXml_Click" HorizontalAlignment="Right" Width="124" Height="25" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
