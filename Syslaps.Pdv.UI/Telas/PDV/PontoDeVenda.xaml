@@ -78,7 +78,7 @@
                             <ColumnDefinition Width="Auto"  />
                             <ColumnDefinition  Width="7*"/>
                             <ColumnDefinition  Width="Auto"/>
-                            <ColumnDefinition  Width="2*"/>
+                            <ColumnDefinition  Width="3*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Localizar Produto: " FontSize="14" FontWeight="Bold" VerticalAlignment="Center" Margin="15,0,0,0"/>
                         <TextBox Grid.Column="1"  x:Name="TxtProduto" Text="{Binding FiltrarComEsteTexto, UpdateSourceTrigger=PropertyChanged}" Height="63" FontSize="36"  Margin="15, 0, 25, 0" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" />
@@ -133,15 +133,15 @@
                                                             <RowDefinition />
                                                             <RowDefinition />
                                                         </Grid.RowDefinitions>
-                                                        <TextBlock Grid.Row="0"  Text="{Binding Produto.Descricao}" Width="330" TextAlignment="Center" />
+                                                        <TextBlock Grid.Row="0"  Text="{Binding Produto.Descricao}" Width="330" TextAlignment="Center" FontSize="18" />
                                                         <Button Grid.Row="0" Content="x" Click="ButtonRemoverProduto_OnClick" Width="20" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                                                         <WrapPanel Grid.Row="1"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,2" >
-                                                            <TextBlock Text="Qtde:" Margin="10,0,5,0" />
-                                                            <TextBox Name="TxtVendaProdutoQuantidade"  Text="{Binding Quantidade, ConverterCulture='pt-BR'}"  Width="30" PreviewTextInput="UIElement_OnPreviewTextInput" LostFocus="TxtVendaProdutoValor_OnLostFocus" TextAlignment="Center" KeyDown="TxtVendaProdutoQuantidade_KeyDown" />
-                                                            <TextBlock Text="x R$" Margin="10,0,10,0" />
-                                                            <TextBox Name="TxtVendaProdutoValor"  Text="{Binding ValorDoProdutoComDesconto, ConverterCulture='pt-BR', StringFormat={}{0:0.00}}" Width="50"  TextAlignment="Center" PreviewTextInput="UIElement_OnPreviewTextInput" LostFocus="TxtVendaProdutoValor_OnLostFocus" KeyDown="TxtVendaProdutoQuantidade_KeyDown"/>
-                                                            <TextBlock Text="{Binding ValorTotalVendaProduto, ConverterCulture='pt-BR', StringFormat={}{0:c}}" Margin="10,0,0,0" FontWeight="Bold"/>
+                                                            <TextBlock Text="Qtde:" Margin="10,0,5,0" FontSize="18" />
+                                                            <TextBox Name="TxtVendaProdutoQuantidade"  Text="{Binding Quantidade, ConverterCulture='pt-BR'}"  Width="30" FontSize="18" PreviewTextInput="UIElement_OnPreviewTextInput" LostFocus="TxtVendaProdutoValor_OnLostFocus" TextAlignment="Center" KeyDown="TxtVendaProdutoQuantidade_KeyDown" />
+                                                            <TextBlock Text="x R$" Margin="10,0,10,0"  FontSize="18" />
+                                                            <TextBox Name="TxtVendaProdutoValor"  Text="{Binding ValorDoProdutoComDesconto, ConverterCulture='pt-BR', StringFormat={}{0:0.00}}" Width="50" FontSize="18"  TextAlignment="Center" PreviewTextInput="UIElement_OnPreviewTextInput" LostFocus="TxtVendaProdutoValor_OnLostFocus" KeyDown="TxtVendaProdutoQuantidade_KeyDown"/>
+                                                            <TextBlock Text="{Binding ValorTotalVendaProduto, ConverterCulture='pt-BR', StringFormat={}{0:c}}" Margin="10,0,0,0" FontSize="22" FontWeight="Bold" Foreground="DarkRed" />
                                                         </WrapPanel>
                                                     </Grid>
                                                 </Border>

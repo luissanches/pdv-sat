@@ -73,7 +73,7 @@ namespace Syslaps.Pdv.UI.Telas.PDV
                 BtnIncluirCpf.Visibility = Visibility.Visible;
                 TxtNrComanda.Visibility = Visibility.Visible;
                 LblNrComanda.Visibility = Visibility.Visible;
-                PainelProdutosDaVenda.Width = new GridLength(380);
+                PainelProdutosDaVenda.Width = new GridLength(480);
                 StpTotal.Visibility = Visibility.Visible;
                 _mvvm.NotifyPropertyChanged("ValorTotalDaVenda");
                 TxtProduto.Text = "";
