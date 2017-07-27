@@ -121,6 +121,8 @@ namespace Syslaps.Pdv.UI.Telas.PDV
                     {
                         _mvvm.AdicionarVendaProduto(produto, qtde);
                     });
+
+                    TxtProduto.SelectAll();
                 }
                 else
                 {

@@ -130,6 +130,11 @@ namespace Syslaps.Pdv.UI.Telas.Alertas
                         CmbTipoDePagameto.SelectedIndex = 4;
                         break;
                     }
+                case Key.F6:
+                    {
+                        CmbTipoDePagameto.SelectedIndex = 5;
+                        break;
+                    }
                 case Key.F10:
                     {
                         AdicionarPagamento_OnClick(null, null);
