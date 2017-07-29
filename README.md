@@ -42,7 +42,6 @@ utilizando Internet, através de equipamento SAT.
 	<add name="Repositorio" connectionString="Data Source=C:\Projects\luissanches\pdv-sat\misc\db.sl3;Version=3;" /> <!-- Caminho do banco SQLite -->
 </connectionStrings>
 ```
-
 3 - Alterar tabela de Parametros<br>
 4 - Alterar tabela de Produtos<br>
 5 - Alterar planilha de produtos importar através do PDV-SAT<br>
