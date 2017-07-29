@@ -1,10 +1,12 @@
 # PDV-SAT
 
 #### Descrição
-##### Ponto de Venda de Produtos com integração SAT.
-##### Transmite as informações das operações comerciais dos contribuintes varejistas do estado de São Paulo,
-##### utilizando Internet, através de equipamento SAT.
-=============
+'''
+Ponto de Venda de Produtos com integração SAT.
+Transmite as informações das operações comerciais dos contribuintes varejistas do estado de São Paulo,
+utilizando Internet, através de equipamento SAT.
+'''
+
 
 #### Motivação
 Ponto de Venda de Produtos com integração SAT.
