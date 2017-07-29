@@ -26,8 +26,8 @@ utilizando Internet, através de equipamento SAT.
 
 ### Configuração para desenvolvimento ###
 
-1 - Configurar projeto para compilar em x86 (por causa das dlls do SAT e Impressora)
-2 - Alterar arquivo de configuração: 
+1 - Configurar projeto para compilar em x86 (por causa das dlls do SAT e Impressora) <br>
+2 - Alterar arquivo de configuração: <br>
 ```
 ...
 <add key="NomeDoCaixa" value="pdv1" /> <!-- Nome de identificação do Caixa -->
@@ -43,11 +43,11 @@ utilizando Internet, através de equipamento SAT.
 </connectionStrings>
 ```
 
-3 - Alterar tabela de Parametros
-4 - Alterar tabela de Produtos
-5 - Alterar planilha de produtos importar através do PDV-SAT
-6 - Configuração concluída.
-=============
+3 - Alterar tabela de Parametros<br>
+4 - Alterar tabela de Produtos<br>
+5 - Alterar planilha de produtos importar através do PDV-SAT<br>
+6 - Configuração concluída<br>
+-------------
 
 ### Prints ###
 
