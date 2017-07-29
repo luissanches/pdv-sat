@@ -26,8 +26,8 @@ utilizando Internet, através de equipamento SAT.
 
 ### Configuração para desenvolvimento ###
 
-1 - Configurar projeto para compilar em x86 (por causa das dlls do SAT e Impressora) 
-2 - Alterar arquivo de configuração:
+- Configurar projeto para compilar em x86 (por causa das dlls do SAT e Impressora) 
+- Alterar arquivo de configuração:
 ```
 ...
 <add key="NomeDoCaixa" value="pdv1" /> <!-- Nome de identificação do Caixa -->
@@ -42,10 +42,10 @@ utilizando Internet, através de equipamento SAT.
 	<add name="Repositorio" connectionString="Data Source=C:\Projects\luissanches\pdv-sat\misc\db.sl3;Version=3;" /> <!-- Caminho do banco SQLite -->
 </connectionStrings>
 ```
-3 - Alterar tabela de Parametros
-4 - Alterar tabela de Produtos
-5 - Alterar planilha de produtos importar através do PDV-SAT
-6 - Configuração concluída
+- Alterar tabela de Parametros
+- Alterar tabela de Produtos
+- Alterar planilha de produtos importar através do PDV-SAT
+- Configuração concluída
 -------------
 
 ### Prints ###
