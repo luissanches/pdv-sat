@@ -1,14 +1,20 @@
 # PDV-SAT
 
-### Descrição ###
+#### Descrição
 
 Ponto de Venda de Produtos com integração SAT.
 Transmite as informações das operações comerciais dos contribuintes varejistas do estado de São Paulo,
 utilizando Internet, através de equipamento SAT.
-
 =============
 
-### Funcionalidades ###
+#### Motivação
+
+Ponto de Venda de Produtos com integração SAT.
+Transmite as informações das operações comerciais dos contribuintes varejistas do estado de São Paulo,
+utilizando Internet, através de equipamento SAT.
+=============
+
+#### Funcionalidades ###
 
 ```
 - Importação / Atualização de Produtos através de Planilha 
@@ -24,7 +30,7 @@ utilizando Internet, através de equipamento SAT.
 ```
 
 
-### Configuração para desenvolvimento ###
+#### Configuração para desenvolvimento
 
 - Configurar projeto para compilar em x86 (por causa das dlls do SAT e Impressora) 
 - Alterar arquivo de configuração:
@@ -48,7 +54,7 @@ utilizando Internet, através de equipamento SAT.
 - Configuração concluída
 -------------
 
-### Prints ###
+#### Prints
 
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/login.png)
 =============
