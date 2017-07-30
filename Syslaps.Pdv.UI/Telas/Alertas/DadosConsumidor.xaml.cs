@@ -19,7 +19,16 @@ namespace Syslaps.Pdv.UI.Telas.Alertas
             TxtCpf.Mask = ConfigurationManager.AppSettings["MascaraCPF"];
 
             if (!_mvvm.VendaCorrente.VendaCorrente.CpfCnpjCliente.IsNullOrEmpty())
+            {
+                if( _mvvm.VendaCorrente.VendaCorrente.TipoDocumento == "CNPJ")
+                {
+                    TxtCpf.Mask = ConfigurationManager.AppSettings["MascaraCNPJ"];
+                    tpCnpj.IsChecked = true;
+
+                }
                 TxtCpf.Text = _mvvm.VendaCorrente.VendaCorrente.CpfCnpjCliente;
+            }
+                
 
             if (!_mvvm.VendaCorrente.VendaCorrente.NomeCliente.IsNullOrEmpty())
                 TxtNome.Text = _mvvm.VendaCorrente.VendaCorrente.NomeCliente;

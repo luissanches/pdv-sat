@@ -87,7 +87,11 @@ namespace Syslaps.Pdv.UI.Telas.SAT
             {
                 try
                 {
-                    StatusValidate();
+                    Dispatcher.Invoke(() =>
+                    {
+                        StatusValidate();
+                    });
+                    
                     return;
                 }
                 catch (Exception ex)
@@ -95,9 +99,9 @@ namespace Syslaps.Pdv.UI.Telas.SAT
                     MessageBox.Show(string.Concat("Falha ao se comunicar com SAT.\nMensagem: ", ex.Message), InstanceManager.Parametros.TituloDasMensagens, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-            tsat.Wait(10000);
+            tsat.Wait(5000);
             this.StopWait();
-            MessageBox.Show("Não foi possível estabelecer comunicação com SAT.");
+            //MessageBox.Show("Não foi possível estabelecer comunicação com SAT.");
         }
 
         private void StatusValidate()
