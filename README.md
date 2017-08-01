@@ -66,7 +66,7 @@ sem ser necessário grandes investimentos.
 ### Prints
 
 [Login]
-![Tela de Login](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/login.png "Tela de Login")
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/login.png)
 =============
 
 [Tela Principal]
@@ -80,3 +80,20 @@ sem ser necessário grandes investimentos.
 [Tela de Pagamentos da Venda]
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/payment.png)
 =============
+
+[SAT OffLine]
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/sat_offline.png)
+=============
+
+[Tabela de Parametros]
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/parametros.png)
+=============
+
+[Arquivo de Configuração]
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/config.png)
+=============
+
+[Planilha com Produtos]
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/produtos.png)
+=============
+
