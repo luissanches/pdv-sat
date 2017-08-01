@@ -64,19 +64,22 @@ sem ser necessário grandes investimentos.
 ```
 
 ### Prints
+```
+[Login]
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/login.png)
+```
 
-### Login
-![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/login.png)[]
-=============
+```
+[Tela Principal]
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/main.png)
+```
 
-### Tela Principal 
-![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/main.png)[]
-=============
-
-### Tela de Venda de Produtos 
+```
+[Tela de Venda de Produtos] 
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/sell.png)
-=============
+```
 
-### Tela de Pagamentos da Venda
+```
+[Tela de Pagamentos da Venda]
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/payment.png)
-=============
+```
