@@ -63,44 +63,51 @@ sem ser necessário grandes investimentos.
 </connectionStrings>
 ```
 
-### Prints
+## Prints
 
-Login: 
+#### Login: 
 =============
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/login.png)
 =============
 
-Tela Principal: 
+
+#### Tela Principal: 
 =============
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/main.png)
 =============
 
-Tela de Venda de Produtos: 
+
+#### Tela de Venda de Produtos: 
 =============
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/sell.png)
 =============
 
-Tela de Pagamentos da Venda: 
+
+#### Tela de Pagamentos da Venda: 
 =============
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/payment.png)
 =============
 
-SAT OffLine: 
+
+#### SAT OffLine: 
 =============
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/sat_offline.png)
 =============
 
-Tabela de Parametros: 
+
+#### Tabela de Parametros: 
 =============
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/parametros.png)
 =============
 
-Arquivo de Configuração: 
+
+#### Arquivo de Configuração: 
 =============
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/config.png)
 =============
 
-Planilha com Produtos: 
+
+#### Planilha com Produtos: 
 =============
 ![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/produtos.png)
 =============
