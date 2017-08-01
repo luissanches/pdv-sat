@@ -66,11 +66,11 @@ sem ser necessário grandes investimentos.
 ### Prints
 
 ### Login
-![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/login.png){:border-style="solid" border-width="1px"}
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/login.png)[]
 =============
 
 ### Tela Principal 
-![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/main.png){:border-style="solid" border-width="1px"}
+![](https://github.com/luissanches/pdv-sat/blob/master/misc/printscreen/main.png)[]
 =============
 
 ### Tela de Venda de Produtos 
