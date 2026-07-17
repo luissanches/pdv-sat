@@ -37,7 +37,7 @@ namespace Syslaps.Pdv.UI
                 ioc.For<IEmail>().Use<Email>().Singleton();
                 ioc.For<IImpressora>().Use<Impressora>().Singleton();
                 ioc.For<IInfraLogger>().Use<Logger>().Singleton();
-                ioc.For<Parametros>().Use<Parametros>().Singleton();
+                ioc.For<Parametros>().Use<Parametros>();
                 ioc.For<ClienteCampanha>().Use<ClienteCampanha>().Singleton();
                 ioc.For<IRepositorioCriarBaseDeDados>().Use<RepositorioCriarBaseDeDados>().Singleton();
                 ioc.For<IClienteCampanhaRepositorio>().Use<RepositorioClienteCampanha>().Singleton();

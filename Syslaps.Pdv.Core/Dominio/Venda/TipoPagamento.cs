@@ -8,7 +8,7 @@ namespace Syslaps.Pdv.Core.Dominio.Venda
     {
         private readonly IRepositorioBase repositorio;
 
-        private static List<Entity.TipoPagamento> listaDeTiposDePagamento;
+        private List<Entity.TipoPagamento> listaDeTiposDePagamento;
 
         public List<Entity.TipoPagamento> ListaDeTiposDePagamento
         {

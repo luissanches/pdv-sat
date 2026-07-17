@@ -15,6 +15,8 @@ namespace Syslaps.Pdv.Core.Dominio.Base
 
         List<TEntity> RecuperarTodos<TEntity>();
 
+        bool TabelasExistem();
+
         void LimparLogDaBase();
     }
 }

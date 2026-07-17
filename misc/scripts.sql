@@ -162,8 +162,10 @@ CREATE TABLE OperacaoCaixa (
 DROP TABLE IF EXISTS Parametro;
 
 CREATE TABLE Parametro (
-    Nome  VARCHAR (120)  NOT NULL,
-    Valor VARCHAR (1000) NOT NULL,
+    Nome         VARCHAR (120)  NOT NULL,
+    Valor        VARCHAR (1000) NOT NULL,
+    Sincronizado BIT            NOT NULL
+                                DEFAULT (0),
     PRIMARY KEY (
         Nome
     )

@@ -69,13 +69,15 @@ namespace Syslaps.Pdv.UI
                 }
                 else
                 {
-                    MessageBox.Show(InstanceManager.UsuarioCorrente.Mensagem, InstanceManager.Parametros.TituloDasMensagens, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    var titulo = InstanceManager.Parametros?.TituloDasMensagens ?? ConfigurationManager.AppSettings["TituloInicial"];
+                    MessageBox.Show(InstanceManager.UsuarioCorrente.Mensagem, titulo, MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (Exception ex)
             {
                 InstanceManager.Logger.Error(ex);
-                MessageBox.Show(ex.Message, InstanceManager.Parametros.TituloDasMensagens, MessageBoxButton.OK,MessageBoxImage.Error);
+                var titulo = InstanceManager.Parametros?.TituloDasMensagens ?? ConfigurationManager.AppSettings["TituloInicial"];
+                MessageBox.Show(ex.Message, titulo, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -89,9 +91,7 @@ namespace Syslaps.Pdv.UI
             {
                 var repositorio = ContainerIoc.GetInstance<RepositorioBase>();
                 repositorio.LimparLogDaBase();
-                
                 InstanceManager.ListaDeTipoPagamentos = repositorio.RecuperarTodos<TipoPagamento>();
-                InstanceManager.Parametros = ContainerIoc.GetInstance<Parametros>();
                 InstanceManager.Logger.Info("Login Loaded.....");
             });
         }

@@ -34,9 +34,9 @@ namespace Syslaps.Pdv.Infra.Repositorio
             }
         }
 
-        public async void Inserir<TEntity>(TEntity entity)
+        public void Inserir<TEntity>(TEntity entity)
         {
-            await Db.InsertAsync(entity);
+            Db.Insert(entity);
         }
 
         public async Task<bool> Atualizar<TEntity>(TEntity entity)
@@ -57,6 +57,12 @@ namespace Syslaps.Pdv.Infra.Repositorio
         public List<TEntity> RecuperarTodos<TEntity>()
         {
             return Db.Query<TEntity>($"select * from {typeof(TEntity).GetName()}").ToList();
+        }
+
+        public bool TabelasExistem()
+        {
+            var count = Db.ExecuteScalar<int>("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='TipoPagamento'");
+            return count > 0;
         }
 
         public void LimparLogDaBase()

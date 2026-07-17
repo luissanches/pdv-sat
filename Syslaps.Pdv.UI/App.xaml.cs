@@ -4,10 +4,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Syslaps.Pdv.Core;
 using Syslaps.Pdv.Core.Dominio.Base;
 using Syslaps.Pdv.Cross;
 using Caixa = Syslaps.Pdv.Core.Dominio.Caixa.Caixa;
 using Syslaps.Pdv.Core.Dominio.Impressora;
+using Syslaps.Pdv.Infra.Repositorio;
 using System.Configuration;
 
 namespace Syslaps.Pdv.UI
@@ -33,6 +35,16 @@ namespace Syslaps.Pdv.UI
             CultureInfo culture = new CultureInfo(ConfigurationManager.AppSettings["Cultura"]);
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
+
+            var repositorio = ContainerIoc.GetInstance<RepositorioBase>();
+            if (!repositorio.TabelasExistem())
+            {
+                var bootstrap = ContainerIoc.GetInstance<Bootstrap>();
+                bootstrap.CriarBancoDeDados();
+                bootstrap.CriarDadosIniciais();
+                InstanceManager.Logger.Info("Banco de dados criado do zero.");
+            }
+            InstanceManager.Parametros = ContainerIoc.GetInstance<Parametros>();
 
             base.OnStartup(e);
         }
